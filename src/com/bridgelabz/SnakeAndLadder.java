@@ -12,18 +12,19 @@ public class SnakeAndLadder {
     }
 
     public static void diceRoll() {
-        while(currentPosition < FINAL_POSITION) {
+        while (currentPosition < FINAL_POSITION) {
             int diceResult = (int) (Math.floor(Math.random() * 10) % 6 + 1);
             int playCheck = (int) (Math.floor(Math.random() * 10) % 3);
-            if(playCheck == 0) {
+            if (playCheck == 0) {
                 currentPosition += 0;
-            }
-            else if(playCheck == 1) {
+            } else if (playCheck == 1) {
                 currentPosition += diceResult;
-            }
-            else {
+                if (currentPosition > 100) {
+                    currentPosition -= diceResult;
+                }
+            } else {
                 currentPosition -= diceResult;
-                if(currentPosition<0) {
+                if (currentPosition < 0) {
                     currentPosition = START_POSITION;
                 }
             }
